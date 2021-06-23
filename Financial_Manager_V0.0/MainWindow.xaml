@@ -4,9 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Financial_Manager_V0._0"
+        xmlns:viewmodels="clr-namespace:Financial_Manager_V0._0.ViewModel"
+        xmlns:views="clr-namespace:Financial_Manager_V0._0.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+ 
+        <DataTemplate x:Name="AccountView" DataType="{x:Type viewmodels:AccountViewModel}">
+            <views:RegisterAccount DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="ReportView" DataType="{x:Type viewmodels:ReportViewModel}">
+            <views:ReportView DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="Orange">
+            <StackPanel Orientation="Vertical">
+                <Button Content="Red View" Click="RedViewClicked"/>
+                <Button Content="Blue View" Click="BlueViewClicked"/>
+            </StackPanel>
+        </DockPanel>
+        <ContentControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Content="{Binding}"/>
     </Grid>
 </Window>

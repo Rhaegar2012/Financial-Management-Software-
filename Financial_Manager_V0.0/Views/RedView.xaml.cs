@@ -12,28 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Financial_Manager_V0._0.ViewModel;
 
-namespace Financial_Manager_V0._0
+namespace Financial_Manager_V0._0.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserControl1 : UserControl
     {
-        public MainWindow()
+        public UserControl1()
         {
             InitializeComponent();
-        }
-
-        private void RedViewClicked(object sender, RoutedEventArgs e)
-        {
-            DataContext = new AccountViewModel();
-        }
-
-        private void BlueViewClicked(object sender, RoutedEventArgs e)
-        {
-            DataContext = new ReportViewModel();
         }
     }
 }

@@ -57,12 +57,6 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\AccountViewModel.cs" />
     <Compile Include="ViewModel\ReportViewModel.cs" />
-    <Compile Include="Views\RedView.xaml.cs">
-      <DependentUpon>RedView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\BlueView.xaml.cs">
-      <DependentUpon>BlueView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\RegisterAccount.xaml.cs">
       <DependentUpon>RegisterAccount.xaml</DependentUpon>
     </Compile>
@@ -81,14 +75,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\RedView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\BlueView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\RegisterAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

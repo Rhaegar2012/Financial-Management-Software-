@@ -26,12 +26,12 @@ namespace Financial_Manager_V0._0
             InitializeComponent();
         }
 
-        private void RedViewClicked(object sender, RoutedEventArgs e)
+        private void AccountViewModel(object sender, RoutedEventArgs e)
         {
             DataContext = new AccountViewModel();
         }
 
-        private void BlueViewClicked(object sender, RoutedEventArgs e)
+        private void ReportViewModel(object sender, RoutedEventArgs e)
         {
             DataContext = new ReportViewModel();
         }

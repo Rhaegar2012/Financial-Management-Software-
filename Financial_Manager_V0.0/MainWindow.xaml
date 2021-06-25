@@ -7,7 +7,7 @@
         xmlns:viewmodels="clr-namespace:Financial_Manager_V0._0.ViewModel"
         xmlns:views="clr-namespace:Financial_Manager_V0._0.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Financial Manager " Height="450" Width="800">
     <Window.Resources>
  
         <DataTemplate x:Name="AccountView" DataType="{x:Type viewmodels:AccountViewModel}">
@@ -19,18 +19,42 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="Orange">
+        <DockPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="DeepSkyBlue" >
             <StackPanel Orientation="Vertical">
-                <Button Content="Red View" Click="RedViewClicked"/>
-                <Button Content="Blue View" Click="BlueViewClicked"/>
+                <Button Background="Transparent" BorderBrush="Transparent" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <Image Source="Icons/Menu.png"/>
+                </Button>
+                    <ListView BorderBrush="transparent" Background="Transparent" FontFamily="Century Gothic" FontSize="12" Foreground="black">
+                    <ListViewItem Height="30">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="icons/Account_filled.png" Opacity="110"/>
+                            <Button Content="Register Account" Background="Transparent" BorderBrush="Transparent" Click="AccountViewModel"/>
+                        </StackPanel>
+                    
+                    </ListViewItem>
+                    <ListViewItem Height="30">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="icons/Report_filled.png" Opacity="110"/>
+                            <Button Content="Report" Background="Transparent" BorderBrush="Transparent" Click="ReportViewModel"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="30">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="icons/Quote_filled.png" Opacity="110"/>
+                            <Button Content="Quote" Background="Transparent" BorderBrush="Transparent"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                </ListView>
             </StackPanel>
+          
         </DockPanel>
         <ContentControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Content="{Binding}"/>
     </Grid>

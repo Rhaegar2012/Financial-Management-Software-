@@ -128,5 +128,20 @@
     <Folder Include="Model\" />
     <Folder Include="Utilities\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Account.png" />
+    <Resource Include="Icons\Quote.png" />
+    <Resource Include="Icons\Report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Quote_filled.png" />
+    <Resource Include="Icons\Report_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Account_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Menu.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

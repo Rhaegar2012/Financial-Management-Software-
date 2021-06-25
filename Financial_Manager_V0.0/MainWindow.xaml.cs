@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Financial_Manager_V0._0.ViewModel;
+using System.Windows.Threading;
 
 namespace Financial_Manager_V0._0
 {
@@ -21,9 +22,38 @@ namespace Financial_Manager_V0._0
     /// </summary>
     public partial class MainWindow : Window
     {
+        DispatcherTimer timer;
+        private double panelWidth;
+        bool hidden;
         public MainWindow()
         {
             InitializeComponent();
+            timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 10);
+            timer.Tick += Timer_Tick;
+            panelWidth = MenuPanel.Width;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (hidden)
+            {
+                MenuPanel.Width += 1;
+                if (MenuPanel.Width >= 150)
+                {
+                    timer.Stop();
+                    hidden = false;
+                }
+            }
+            else
+            {
+                MenuPanel.Width -= 1;
+                if (MenuPanel.Width <= 36)
+                {
+                    timer.Stop();
+                    hidden = true;
+                }
+            }
         }
 
         private void AccountViewModel(object sender, RoutedEventArgs e)
@@ -34,6 +64,11 @@ namespace Financial_Manager_V0._0
         private void ReportViewModel(object sender, RoutedEventArgs e)
         {
             DataContext = new ReportViewModel();
+        }
+
+        private void MenuDrawerClick(object sender, RoutedEventArgs e)
+        {
+            timer.Start();
         }
     }
 }

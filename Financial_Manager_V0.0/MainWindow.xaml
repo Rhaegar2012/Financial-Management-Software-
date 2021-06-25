@@ -26,29 +26,50 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="DeepSkyBlue" >
+        <DockPanel x:Name="MenuPanel" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="DeepSkyBlue" HorizontalAlignment="Left" Width="150" >
             <StackPanel Orientation="Vertical">
-                <Button Background="Transparent" BorderBrush="Transparent" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button Background="Transparent" BorderBrush="Transparent" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Click="MenuDrawerClick">
                     <Image Source="Icons/Menu.png"/>
                 </Button>
-                    <ListView BorderBrush="transparent" Background="Transparent" FontFamily="Century Gothic" FontSize="12" Foreground="black">
+                    <ListView BorderBrush="transparent" Background="Transparent" FontFamily="Century Gothic" FontSize="12" Foreground="black" >
                     <ListViewItem Height="30">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="icons/Account_filled.png" Opacity="110"/>
-                            <Button Content="Register Account" Background="Transparent" BorderBrush="Transparent" Click="AccountViewModel"/>
-                        </StackPanel>
-                    
-                    </ListViewItem>
-                    <ListViewItem Height="30">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="icons/Report_filled.png" Opacity="110"/>
-                            <Button Content="Report" Background="Transparent" BorderBrush="Transparent" Click="ReportViewModel"/>
+                            <Button Background= "Transparent" BorderBrush="Transparent" Height="30" Click="AccountViewModel">
+                                <Image Source="icons/Account_filled.png" Opacity="110"/>
+                            </Button>
+                            <TextBlock Text="Register Account" Margin="6"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="30">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="icons/Quote_filled.png" Opacity="110"/>
-                            <Button Content="Quote" Background="Transparent" BorderBrush="Transparent"/>
+                            <Button Background="Transparent" BorderBrush="Transparent" Height="30" Click="ReportViewModel">
+                                <Image Source="icons/Report_filled.png" Opacity="110"/>
+                            </Button>
+                            <TextBlock Text="Report" Margin="6,6,2,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="30">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Background="Transparent" BorderBrush="Transparent" Height="30" >
+                                <Image Source="icons/Analytics_filled.png"/>
+                            </Button>
+                            <TextBlock Text="Analytics" Margin="6"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="30">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Background="Transparent" BorderBrush="Transparent" Height="30">
+                                <Image Source="Icons/Client_Filled.png.png"/>
+                            </Button>
+                            <TextBlock Text="Clients" Margin="6,6,2,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="30">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Background="Transparent" BorderBrush="Transparent" Height="30">
+                                <Image Source="icons/Quote_filled.png" Opacity="110"/>
+                            </Button>
+                            <TextBlock Text="Quote" Margin="6,6,2,0"/>
                         </StackPanel>
                     </ListViewItem>
 

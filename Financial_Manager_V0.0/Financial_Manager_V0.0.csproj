@@ -143,5 +143,11 @@
   <ItemGroup>
     <Resource Include="Icons\Menu.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Analytics_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Client_Filled.png.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

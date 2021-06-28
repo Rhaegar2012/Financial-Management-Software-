@@ -4,9 +4,46 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Financial_Manager_V0._0.Views"
+             xmlns:viewmodels="clr-namespace:Financial_Manager_V0._0.ViewModel"
+             xmlns:folders="clr-namespace:Financial_Manager_V0._0"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <viewmodels:AccountViewModel x:Key="ModelView"/>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Source="{StaticResource ModelView}"/>
+    </UserControl.DataContext>
     <Grid Background="Azure">
-        <TextBlock Text="Account View" FontSize="100"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Background="Azure">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
+                <TextBox x:Name="InvoiceInput" BorderBrush="Transparent" />
+                <TextBlock Text="Invoice No" FontSize="12" FontFamily="Century Gothic"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                <TextBox x:Name="ClientNameInput" BorderBrush="Transparent" Width="60"/>
+                <TextBlock Text="Client" FontSize="12" FontFamily="Century Gothic"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                <TextBox x:Name="ItemInput" BorderBrush="Transparent" Width="60"/>
+                <TextBlock Text="Item" FontSize="12" FontFamily="Century Gothic"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                <TextBox x:Name="QuantityInput" BorderBrush="Transparent" Width="60"/>
+                <TextBlock Text="Quantity" FontSize="12" FontFamily="Century Gothic"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                <TextBox x:Name="UnityPriceInput" BorderBrush="Transparent" Width="60"/>
+                <TextBlock Text="Unit Price" FontSize="12" FontFamily="Century Gothic"/>
+            </StackPanel>
+            <Button x:Name="AddAccountButton">
+                <Image Source="folders/icons/Add_button.png"/>
+
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

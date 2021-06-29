@@ -19,31 +19,48 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Background="Azure">
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
-                <TextBox x:Name="InvoiceInput" BorderBrush="Transparent" />
-                <TextBlock Text="Invoice No" FontSize="12" FontFamily="Century Gothic"/>
+        <StackPanel  Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Background="Azure">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0" >
+                    <TextBox x:Name="InvoiceInput" BorderBrush="Transparent" Text="{Binding InvoiceNumber,Mode=TwoWay}"/>
+                    <TextBlock Text="Invoice No" FontSize="12" FontFamily="Century Gothic"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                    <TextBox x:Name="ClientNameInput" BorderBrush="Transparent" Width="60" Text="{Binding ClientName, Mode=TwoWay}"/>
+                    <TextBlock Text="Client/Supplier" FontSize="12" FontFamily="Century Gothic"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                    <ComboBox x:Name="AccountComBox" Width="60" Height="20" Margin="0,0,0,0" HorizontalAlignment="Left">
+                        <ComboBoxItem Content="Invoice"></ComboBoxItem>
+                        <ComboBoxItem Content="Bill"></ComboBoxItem>
+                    </ComboBox>
+                    <TextBlock Text="Account Type" FontSize="12" FontFamily="Century Gothic"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
-                <TextBox x:Name="ClientNameInput" BorderBrush="Transparent" Width="60"/>
-                <TextBlock Text="Client" FontSize="12" FontFamily="Century Gothic"/>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                    <TextBox x:Name="ItemInput" BorderBrush="Transparent" Width="150" HorizontalAlignment="Left" Text="{Binding ItemName,Mode=TwoWay}"/>
+                    <TextBlock Text="Item" FontSize="12" FontFamily="Century Gothic"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                    <TextBox x:Name="QuantityInput" BorderBrush="Transparent" Width="60" HorizontalAlignment="Left" Text="{Binding Quantity,Mode=TwoWay}"/>
+                    <TextBlock Text="Quantity" FontSize="12" FontFamily="Century Gothic"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                    <TextBox x:Name="UnityPriceInput" BorderBrush="Transparent" Width="60" HorizontalAlignment="Left" Text="{Binding UnitPrice,Mode=TwoWay}"/>
+                    <TextBlock Text="Unit Price" FontSize="12" FontFamily="Century Gothic"/>
+                </StackPanel>
+                <Button x:Name="AddAccountButton" 
+                    VerticalAlignment="Center" 
+                    Margin="60,20,20,20"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                    <Image Source="Add_button.png" Height="25" Width="25"/>
+                </Button>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
-                <TextBox x:Name="ItemInput" BorderBrush="Transparent" Width="60"/>
-                <TextBlock Text="Item" FontSize="12" FontFamily="Century Gothic"/>
-            </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
-                <TextBox x:Name="QuantityInput" BorderBrush="Transparent" Width="60"/>
-                <TextBlock Text="Quantity" FontSize="12" FontFamily="Century Gothic"/>
-            </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
-                <TextBox x:Name="UnityPriceInput" BorderBrush="Transparent" Width="60"/>
-                <TextBlock Text="Unit Price" FontSize="12" FontFamily="Century Gothic"/>
-            </StackPanel>
-            <Button x:Name="AddAccountButton">
-                <Image Source="folders/icons/Add_button.png"/>
-
-            </Button>
         </StackPanel>
+        <ListView Grid.Row="1" Grid.ColumnSpan="2" Background="Azure">
+
+        </ListView>
     </Grid>
 </UserControl>

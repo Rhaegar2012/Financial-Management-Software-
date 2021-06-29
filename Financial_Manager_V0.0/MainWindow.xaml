@@ -17,7 +17,7 @@
             <views:ReportView DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
-    <Grid>
+    <Grid Background="Azure">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="Auto"/>

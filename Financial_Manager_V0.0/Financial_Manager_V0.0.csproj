@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Utilities\ObservableObject.cs" />
+    <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="ViewModel\AccountViewModel.cs" />
     <Compile Include="ViewModel\ReportViewModel.cs" />
     <Compile Include="Views\RegisterAccount.xaml.cs">
@@ -112,7 +114,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\Account.png" />
@@ -136,7 +137,7 @@
     <Resource Include="Icons\Client_Filled.png.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Add_button.png" />
+    <Resource Include="Views\Add_button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Financial_Manager_V0._0.Utilities;
+using Financial_Manager_V0._0.Model;
 
 namespace Financial_Manager_V0._0.ViewModel
 {
@@ -115,6 +116,7 @@ namespace Financial_Manager_V0._0.ViewModel
                 _addAccountButton = value;
             }
         }
+        
         //Constructor 
         public AccountViewModel()
         {
@@ -123,7 +125,21 @@ namespace Financial_Manager_V0._0.ViewModel
         //Methods
         public void RegisterAccount(object obj)
         {
+            if (CheckInput())
+            {
+                int InvoiceNo = Int32.Parse(this.InvoiceNumber);
+                int Quantity = Int32.Parse(this.Quantity);
+                decimal UnitPrice = Decimal.Parse(this.UnitPrice);
+                DateTime Date = Convert.ToDateTime(this.Date);
+                Account NewAccount = new Account(InvoiceNo, this.ClientName, this.BillingType, this.ItemName, Quantity, UnitPrice, Date);
+                NewAccount.WriteToDatabase();
+            }
+         
+        }
+        private bool CheckInput()
+        {
             //TODO
+            throw new  NotImplementedException();
         }
 
 

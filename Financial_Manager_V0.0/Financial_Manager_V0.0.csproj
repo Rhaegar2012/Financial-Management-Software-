@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Account.cs" />
     <Compile Include="Utilities\ObservableObject.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="ViewModel\AccountViewModel.cs" />
@@ -127,9 +128,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Icons\Account.png" />
     <Resource Include="Icons\Quote.png" />

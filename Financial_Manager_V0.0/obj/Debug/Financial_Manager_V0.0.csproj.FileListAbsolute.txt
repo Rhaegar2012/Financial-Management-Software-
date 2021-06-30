@@ -1,3 +1,5 @@
+C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\bin\Debug\Data\Database.mdf
+C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\bin\Debug\Data\Database_log.ldf
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\bin\Debug\Financial_Manager_V0.0.exe.config
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\bin\Debug\Financial_Manager_V0.0.exe
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\bin\Debug\Financial_Manager_V0.0.pdb
@@ -6,6 +8,7 @@ C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Fin
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\Views\RegisterAccount.g.cs
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\Views\ReportView.g.cs
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\App.g.cs
+C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\Financial_Manager_V0.0_Content.g.cs
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\Financial_Manager_V0.0_MarkupCompile.cache
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\Financial_Manager_V0.0_MarkupCompile.lref

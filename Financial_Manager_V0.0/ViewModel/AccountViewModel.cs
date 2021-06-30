@@ -76,6 +76,32 @@ namespace Financial_Manager_V0._0.ViewModel
                 OnPropertyChanged("UnitPrice");
             }
         }
+        private string in_billingType;
+        public string BillingType
+        {
+            get
+            {
+                return in_billingType;
+            }
+            set
+            {
+                in_billingType = value;
+                OnPropertyChanged("BillingType");
+            }
+        }
+        public string in_date;
+        public string Date
+        {
+            get
+            {
+                return in_date;
+            }
+            set
+            {
+                in_date = value;
+                OnPropertyChanged("Date");
+            }
+        }
         //Buttons
         private ICommand _addAccountButton;
         public ICommand AddAccountButton

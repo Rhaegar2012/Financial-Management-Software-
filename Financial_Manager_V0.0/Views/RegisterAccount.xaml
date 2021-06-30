@@ -26,15 +26,19 @@
                     <TextBlock Text="Invoice No" FontSize="12" FontFamily="Century Gothic"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
-                    <TextBox x:Name="ClientNameInput" BorderBrush="Transparent" Width="60" Text="{Binding ClientName, Mode=TwoWay}"/>
+                    <TextBox x:Name="ClientNameInput" BorderBrush="Transparent" HorizontalAlignment="Left" Width="80" Text="{Binding ClientName, Mode=TwoWay}"/>
                     <TextBlock Text="Client/Supplier" FontSize="12" FontFamily="Century Gothic"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
-                    <ComboBox x:Name="AccountComBox" Width="60" Height="20" Margin="0,0,0,0" HorizontalAlignment="Left">
+                    <ComboBox x:Name="AccountComBox" Width="80" Height="20" Margin="0,0,0,0" HorizontalAlignment="Left" SelectedItem="{Binding BillingType,Mode=TwoWay}">
                         <ComboBoxItem Content="Invoice"></ComboBoxItem>
                         <ComboBoxItem Content="Bill"></ComboBoxItem>
                     </ComboBox>
                     <TextBlock Text="Account Type" FontSize="12" FontFamily="Century Gothic"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20,0,0,0">
+                    <TextBox x:Name="DateInput" BorderBrush="Transparent" Width="80" HorizontalAlignment="Left"  Text="{Binding Date, Mode=TwoWay}"/>
+                    <TextBlock Text="Date MM/DD/YY" FontSize="12" FontFamily="Century Gothic"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">

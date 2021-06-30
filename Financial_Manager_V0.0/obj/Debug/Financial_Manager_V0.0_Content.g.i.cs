@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/main_database.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/main_database_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/database.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/database_log.ldf")]
 
 

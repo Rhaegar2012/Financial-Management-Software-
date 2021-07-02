@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Financial_Manager_V0._0.Model
 {
@@ -106,7 +107,7 @@ namespace Financial_Manager_V0._0.Model
         }
         public void WriteToDatabase()
         {
-            //TODO
+            
         }
         
     }

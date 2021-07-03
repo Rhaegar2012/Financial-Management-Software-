@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -125,6 +126,7 @@ namespace Financial_Manager_V0._0.ViewModel
         //Methods
         public void RegisterAccount(object obj)
         {
+            Console.WriteLine("I'm clicked!");
             if (CheckInput())
             {
                 int InvoiceNo = Int32.Parse(this.InvoiceNumber);
@@ -134,12 +136,27 @@ namespace Financial_Manager_V0._0.ViewModel
                 Account NewAccount = new Account(InvoiceNo, this.ClientName, this.BillingType, this.ItemName, Quantity, UnitPrice, Date);
                 NewAccount.WriteToDatabase();
             }
+            else
+            {
+                MessageBox.Show("Missing Input", "Empty input warning");
+            }
          
         }
         private bool CheckInput()
         {
             //TODO
-            throw new  NotImplementedException();
+            bool CompleteInput = true;
+            List<string> InputBoxes = new List<string> { this.ClientName,this.BillingType,this.InvoiceNumber,
+                this.UnitPrice,this.Quantity,this.ItemName,this.Date};
+            foreach (string input in InputBoxes){
+                if (string.IsNullOrEmpty(input))
+                {
+                    CompleteInput = false;
+                    return CompleteInput;
+                }
+
+            }
+            return CompleteInput;
         }
 
 

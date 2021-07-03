@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using Financial_Manager_V0._0.Data;
 
 namespace Financial_Manager_V0._0.Model
 {
@@ -31,7 +32,7 @@ namespace Financial_Manager_V0._0.Model
             }
             set
             {
-                ClientName = value;
+                _ClientName = value;
             }
         }
         private string _AccountType;
@@ -43,7 +44,7 @@ namespace Financial_Manager_V0._0.Model
             }
             set
             {
-                AccountType = value;
+                _AccountType = value;
             }
         }
         private string _ItemName;
@@ -55,7 +56,7 @@ namespace Financial_Manager_V0._0.Model
             }
             set
             {
-                ItemName=value ;
+                _ItemName=value ;
             }
         }
         private int _Quantity;
@@ -67,7 +68,7 @@ namespace Financial_Manager_V0._0.Model
             }
             set
             {
-                Quantity = value;
+                _Quantity = value;
             }
         }
         private decimal _UnitPrice;
@@ -91,9 +92,10 @@ namespace Financial_Manager_V0._0.Model
             }
             set
             {
-                Date = value;
+                _Date = value;
             }
         }
+        
         //Constructor 
         public Account(int invoiceNo,string clientname, string accounttype,string itemname, int quantity,decimal unitprice, DateTime date)
         {
@@ -104,9 +106,40 @@ namespace Financial_Manager_V0._0.Model
             this.Quantity = quantity;
             this.UnitPrice = unitprice;
             this.Date = date;
+            
+            
+      
         }
+
         public void WriteToDatabase()
         {
+            var DBEntities = new Data.DatabaseEntities();
+            Invoice InvoiceObject = new Invoice()
+            {
+                ClientName = this.ClientName,
+                AccountType = this.AccountType,
+                ItemName = this.ItemName,
+                Quantity = this.Quantity,
+                UnitPrice = (double)this.UnitPrice,
+                InvoiceNo = this.InvoiceNo,
+                Date = this.Date
+            };
+            DBEntities.Invoices.Add(InvoiceObject);
+            DBEntities.SaveChanges();
+            //Shows database Records (For testing purposes) 
+            var invoice = from i in DBEntities.Invoices
+                          select new
+                          {
+                              ClientName = i.ClientName,
+                              Item = i.ItemName,
+                              OrderDate = i.Date
+                          };
+            foreach(var item in invoice)
+            {
+                Console.WriteLine(item.ClientName);
+                Console.WriteLine(item.Item);
+                Console.WriteLine(item.OrderDate);
+            }
             
         }
         

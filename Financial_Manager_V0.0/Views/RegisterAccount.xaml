@@ -58,7 +58,8 @@
                     VerticalAlignment="Center" 
                     Margin="60,20,20,20"
                     Background="Transparent"
-                    BorderBrush="Transparent">
+                    BorderBrush="Transparent"
+                    Command="{Binding AddAccountButton}">
                     <Image Source="Add_button.png" Height="25" Width="25"/>
                 </Button>
             </StackPanel>

@@ -126,6 +126,8 @@ namespace Financial_Manager_V0._0.Model
                 Date = this.Date
             };
             DBEntities.Invoices.Add(InvoiceObject);
+            var tracker=DBEntities.SaveChanges();
+            Console.WriteLine(tracker.ToString());
             //Shows database Records (For testing purposes) 
             var invoice = from i in DBEntities.Invoices
                           select new
@@ -140,7 +142,7 @@ namespace Financial_Manager_V0._0.Model
                 Console.WriteLine(item.Item);
                 Console.WriteLine(item.OrderDate);
             }
-            DBEntities.SaveChanges();
+            
         }
         
     }

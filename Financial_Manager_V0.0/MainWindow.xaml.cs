@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Financial_Manager_V0._0.ViewModel;
 using System.Windows.Threading;
-using Financial_Manager_V0._0.Data;
+
 
 namespace Financial_Manager_V0._0
 {

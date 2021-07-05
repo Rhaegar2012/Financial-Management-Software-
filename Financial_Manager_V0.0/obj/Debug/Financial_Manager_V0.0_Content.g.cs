@@ -12,7 +12,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database_log.ldf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/database.mdf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/database_log.ldf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/entitymodel.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/entitymodel.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("financialmanagerdatabasemodel.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("financialmanagerdatabasemodel.tt")]
 
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using Financial_Manager_V0._0.Data;
+
 
 namespace Financial_Manager_V0._0.Model
 {
@@ -113,7 +113,8 @@ namespace Financial_Manager_V0._0.Model
 
         public void WriteToDatabase()
         {
-            var DBEntities = new Data.DatabaseEntities();
+           
+            var DBEntities = new FinacialManagerDatabaseEntities();
             Invoice InvoiceObject = new Invoice()
             {
                 ClientName = this.ClientName,
@@ -125,7 +126,6 @@ namespace Financial_Manager_V0._0.Model
                 Date = this.Date
             };
             DBEntities.Invoices.Add(InvoiceObject);
-            DBEntities.SaveChanges();
             //Shows database Records (For testing purposes) 
             var invoice = from i in DBEntities.Invoices
                           select new
@@ -140,7 +140,7 @@ namespace Financial_Manager_V0._0.Model
                 Console.WriteLine(item.Item);
                 Console.WriteLine(item.OrderDate);
             }
-            
+            DBEntities.SaveChanges();
         }
         
     }

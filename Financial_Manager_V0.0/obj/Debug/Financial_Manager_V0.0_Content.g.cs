@@ -8,11 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database_log.ldf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/database.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/database_log.ldf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("financialmanagerdatabasemodel.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("financialmanagerdatabasemodel.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("financialdatabase.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("financialdatabasemodel.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("financialdatabasemodel.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("financialdatabase_log.ldf")]
 
 

@@ -53,9 +53,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Dapper.2.0.90\lib\net461\Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -85,26 +82,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Client.cs">
-      <DependentUpon>FinancialManagerDatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FinancialManagerDatabaseModel.Context.cs">
+    <Compile Include="FinancialDatabaseModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FinancialManagerDatabaseModel.Context.tt</DependentUpon>
+      <DependentUpon>FinancialDatabaseModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="FinancialManagerDatabaseModel.cs">
+    <Compile Include="FinancialDatabaseModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FinancialManagerDatabaseModel.tt</DependentUpon>
+      <DependentUpon>FinancialDatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FinancialManagerDatabaseModel.Designer.cs">
+    <Compile Include="FinancialDatabaseModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FinancialManagerDatabaseModel.edmx</DependentUpon>
+      <DependentUpon>FinancialDatabaseModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Invoice.cs">
-      <DependentUpon>FinancialManagerDatabaseModel.tt</DependentUpon>
+    <Compile Include="InvoiceAccount.cs">
+      <DependentUpon>FinancialDatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Utilities\ObservableObject.cs" />
@@ -156,12 +150,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="FinancialManagerDatabaseModel.edmx">
+    <EntityDeploy Include="FinancialDatabaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FinancialManagerDatabaseModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>FinancialDatabaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="FinancialManagerDatabaseModel.edmx.diagram">
-      <DependentUpon>FinancialManagerDatabaseModel.edmx</DependentUpon>
+    <None Include="FinancialDatabaseModel.edmx.diagram">
+      <DependentUpon>FinancialDatabaseModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -212,29 +206,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database.mdf">
+    <Content Include="FinancialDatabase.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Database_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database.mdf</DependentUpon>
-    </Content>
-    <Content Include="Data\Database.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Database_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database.mdf</DependentUpon>
-    </Content>
-    <Content Include="FinancialManagerDatabaseModel.Context.tt">
+    <Content Include="FinancialDatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FinancialManagerDatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>FinancialManagerDatabaseModel.Context.cs</LastGenOutput>
+      <DependentUpon>FinancialDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>FinancialDatabaseModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="FinancialManagerDatabaseModel.tt">
+    <Content Include="FinancialDatabaseModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FinancialManagerDatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>FinancialManagerDatabaseModel.cs</LastGenOutput>
+      <DependentUpon>FinancialDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>FinancialDatabaseModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="FinancialDatabase_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>FinancialDatabase.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

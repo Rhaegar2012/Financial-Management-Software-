@@ -114,25 +114,24 @@ namespace Financial_Manager_V0._0.Model
         public void WriteToDatabase()
         {
            
-            var DBEntities = new FinacialManagerDatabaseEntities();
-            Invoice InvoiceObject = new Invoice()
+            var DBEntities = new FinancialDatabaseEntities();
+            InvoiceAccount InvoiceObject = new InvoiceAccount()
             {
-                ClientName = this.ClientName,
+                ClientName_ = this.ClientName,
                 AccountType = this.AccountType,
                 ItemName = this.ItemName,
                 Quantity = this.Quantity,
-                UnitPrice = (double)this.UnitPrice,
+                UnitPrice = this.UnitPrice,
                 InvoiceNo = this.InvoiceNo,
                 Date = this.Date
             };
-            DBEntities.Invoices.Add(InvoiceObject);
-            var tracker=DBEntities.SaveChanges();
-            Console.WriteLine(tracker.ToString());
+            DBEntities.InvoiceAccounts.Add(InvoiceObject);
+            DBEntities.SaveChanges();
             //Shows database Records (For testing purposes) 
-            var invoice = from i in DBEntities.Invoices
+            var invoice = from i in DBEntities.InvoiceAccounts
                           select new
                           {
-                              ClientName = i.ClientName,
+                              ClientName = i.ClientName_,
                               Item = i.ItemName,
                               OrderDate = i.Date
                           };

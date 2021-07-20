@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using Financial_Manager_V0._0.EntityFramework;
+using static System.Console;
 
 
 namespace Financial_Manager_V0._0.Model
@@ -110,38 +112,37 @@ namespace Financial_Manager_V0._0.Model
             
       
         }
-
-        public void WriteToDatabase()
+        //Writes an Account Record to the database using entity framework
+        public  int WriteToDatabase()
         {
-           
-            var DBEntities = new FinancialDatabaseEntities();
-            InvoiceAccount InvoiceObject = new InvoiceAccount()
+            using(var context=new FinancialEntities())
             {
-                ClientName_ = this.ClientName,
-                AccountType = this.AccountType,
-                ItemName = this.ItemName,
-                Quantity = this.Quantity,
-                UnitPrice = this.UnitPrice,
-                InvoiceNo = this.InvoiceNo,
-                Date = this.Date
-            };
-            DBEntities.InvoiceAccounts.Add(InvoiceObject);
-            DBEntities.SaveChanges();
-            //Shows database Records (For testing purposes) 
-            var invoice = from i in DBEntities.InvoiceAccounts
-                          select new
-                          {
-                              ClientName = i.ClientName_,
-                              Item = i.ItemName,
-                              OrderDate = i.Date
-                          };
-            foreach(var item in invoice)
-            {
-                Console.WriteLine(item.ClientName);
-                Console.WriteLine(item.Item);
-                Console.WriteLine(item.OrderDate);
+                try
+                {
+                    var AccountEntry = new Invoice()
+                    {
+                        AccountType = this.AccountType,
+                        ClientName = this.ClientName,
+                        InvoiceNo = this.InvoiceNo,
+                        ItemName = this.ItemName,
+                        Quantity = this.Quantity,
+                        UnitPrice = this.UnitPrice,
+                        Date = this.Date
+
+                    };
+                    context.Invoices.Add(AccountEntry);
+                    context.SaveChanges();
+                    //On succesful save, EF populates the database with a generated identity field
+                    return AccountEntry.InvoiceID;
+
+                }
+                catch (Exception ex)
+                {
+                    WriteLine(ex.InnerException?.Message);
+                    return 0;
+                }
             }
-            
+        
         }
         
     }

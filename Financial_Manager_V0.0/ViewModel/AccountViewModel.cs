@@ -133,7 +133,7 @@ namespace Financial_Manager_V0._0.ViewModel
                 int Quantity = Int32.Parse(this.Quantity);
                 decimal UnitPrice = Decimal.Parse(this.UnitPrice);
                 DateTime Date = Convert.ToDateTime(this.Date);
-                Account NewAccount = new Account(InvoiceNo, this.ClientName, this.BillingType, this.ItemName, Quantity, UnitPrice, Date);
+                Account NewAccount = new Account(InvoiceNo, this.ClientName, this.BillingType.ToString(), this.ItemName, Quantity, UnitPrice, Date);
                 NewAccount.WriteToDatabase();
             }
             else

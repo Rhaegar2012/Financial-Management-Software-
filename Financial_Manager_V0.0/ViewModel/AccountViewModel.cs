@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Financial_Manager_V0._0.Utilities;
 using Financial_Manager_V0._0.Model;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace Financial_Manager_V0._0.ViewModel
 {
@@ -104,6 +106,7 @@ namespace Financial_Manager_V0._0.ViewModel
                 OnPropertyChanged("Date");
             }
         }
+        public ObservableCollection<string> RecentAccountList { get; private set; }
         //Buttons
         private ICommand _addAccountButton;
         public ICommand AddAccountButton
@@ -131,10 +134,23 @@ namespace Financial_Manager_V0._0.ViewModel
             {
                 int InvoiceNo = Int32.Parse(this.InvoiceNumber);
                 int Quantity = Int32.Parse(this.Quantity);
+                string BillingType = "";
                 decimal UnitPrice = Decimal.Parse(this.UnitPrice);
+                decimal TotalAmount=Quantity*UnitPrice;
                 DateTime Date = Convert.ToDateTime(this.Date);
-                Account NewAccount = new Account(InvoiceNo, this.ClientName, this.BillingType.ToString(), this.ItemName, Quantity, UnitPrice, Date);
+                //Extract substring from Billing Type 
+                if (this.BillingType.Contains("Invoice"))
+                {
+                    BillingType = "Invoice";
+                }
+                else if (this.BillingType.Contains("Bill"))
+                {
+                    BillingType = "Bill";
+                }
+                Account NewAccount = new Account(InvoiceNo, this.ClientName, BillingType, this.ItemName, Quantity, UnitPrice, Date);
                 NewAccount.WriteToDatabase();
+                UpdateAccountList(this.InvoiceNumber, this.ClientName, this.ItemName, BillingType, TotalAmount.ToString(), this.Date);
+
             }
             else
             {
@@ -144,7 +160,7 @@ namespace Financial_Manager_V0._0.ViewModel
         }
         private bool CheckInput()
         {
-            //TODO
+            
             bool CompleteInput = true;
             List<string> InputBoxes = new List<string> { this.ClientName,this.BillingType,this.InvoiceNumber,
                 this.UnitPrice,this.Quantity,this.ItemName,this.Date};
@@ -157,6 +173,17 @@ namespace Financial_Manager_V0._0.ViewModel
 
             }
             return CompleteInput;
+        }
+        private void UpdateAccountList(string InvoiceNo, string ClientName, string ItemName,string AccountType, string TotalAmount,string Date)
+        {
+            string Addition = $"Client: {ClientName} " +
+                $"Invoice No: {InvoiceNo}" +
+                $"AccountType: {AccountType}" +
+                $"Item: {ItemName}" +
+                $"Total Sell: {TotalAmount}" +
+                $"Date: {Date}";
+            RecentAccountList.Add(Addition);
+
         }
 
 

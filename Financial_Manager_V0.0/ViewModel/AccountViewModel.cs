@@ -125,6 +125,7 @@ namespace Financial_Manager_V0._0.ViewModel
         public AccountViewModel()
         {
             AddAccountButton = new RelayCommand(new Action<object>(RegisterAccount));
+            RecentAccountList = new ObservableCollection<string>();
         }
         //Methods
         public void RegisterAccount(object obj)
@@ -148,9 +149,8 @@ namespace Financial_Manager_V0._0.ViewModel
                     BillingType = "Bill";
                 }
                 Account NewAccount = new Account(InvoiceNo, this.ClientName, BillingType, this.ItemName, Quantity, UnitPrice, Date);
-                NewAccount.WriteToDatabase();
                 UpdateAccountList(this.InvoiceNumber, this.ClientName, this.ItemName, BillingType, TotalAmount.ToString(), this.Date);
-
+                NewAccount.WriteToDatabase();
             }
             else
             {
@@ -176,12 +176,12 @@ namespace Financial_Manager_V0._0.ViewModel
         }
         private void UpdateAccountList(string InvoiceNo, string ClientName, string ItemName,string AccountType, string TotalAmount,string Date)
         {
-            string Addition = $"Client: {ClientName} " +
-                $"Invoice No: {InvoiceNo}" +
-                $"AccountType: {AccountType}" +
-                $"Item: {ItemName}" +
-                $"Total Sell: {TotalAmount}" +
-                $"Date: {Date}";
+            string Addition = $"   {ClientName} " +
+                $"                 {InvoiceNo}" +
+                $"                 {AccountType}" +
+                $"                 {ItemName}" +
+                $"                 {TotalAmount}" +
+                $"                 {Date}";
             RecentAccountList.Add(Addition);
 
         }

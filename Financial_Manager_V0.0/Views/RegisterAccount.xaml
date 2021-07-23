@@ -63,8 +63,16 @@
                     <Image Source="Add_button.png" Height="25" Width="25"/>
                 </Button>
             </StackPanel>
-            <TextBlock x:Name="ListViewLabel" Text="Recent Accounts" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
+            <TextBlock x:Name="ListViewLabel" Text="Recent Transaction" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Client" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
+                <TextBlock Text="Invoice No" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
+                <TextBlock Text="Transaction Type" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
+                <TextBlock Text="Item" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
+                <TextBlock Text="Total Transaction" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
+                <TextBlock Text="Date" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
+            </StackPanel>
         </StackPanel>
-        <ListView Grid.Row="1" Grid.ColumnSpan="2" Background="Azure" BorderBrush="Transparent" ItemsSource="{Binding RecentAccountList,Mode=TwoWay}"/>
+        <ListView Grid.Row="1" Grid.ColumnSpan="2" Background="Azure" BorderBrush="Transparent" FontSize="12" FontFamily="Century Gothic" ItemsSource="{Binding RecentAccountList}"/>
     </Grid>
 </UserControl>

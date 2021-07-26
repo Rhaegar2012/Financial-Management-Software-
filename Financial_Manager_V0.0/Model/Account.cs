@@ -97,6 +97,103 @@ namespace Financial_Manager_V0._0.Model
                 _Date = value;
             }
         }
+        //Report  properties 
+        private string _topSellingProduct;
+        public string TopSellingProduct
+        {
+            get
+            {
+                return _topSellingProduct;
+            }
+            set
+            {
+                _topSellingProduct = value;
+            }
+        }
+        private string _mostBoughtProduct;
+        public string MostBoughtProduct
+        {
+            get
+            {
+                return _mostBoughtProduct;
+            }
+            set
+            {
+                _mostBoughtProduct = value;
+            }
+        }
+        private string _topClient;
+        public string TopClient
+        {
+            get
+            {
+                return _topClient;
+            }
+            set
+            {
+                _topClient = value;
+            }
+        }
+        private string _topSupplier;
+        public string TopSupplier
+        {
+            get
+            {
+                return _topSupplier;
+            }
+            set
+            {
+                _topSupplier = value;
+            }
+        }
+        private string _totalIncome;
+        public string TotalIncome
+        {
+            get
+            {
+                return _totalIncome;
+            }
+            set
+            {
+                _totalIncome = value;
+            }
+        }
+        private string _totalExpense;
+        public string TotalExpense
+        {
+            get
+            {
+                return _totalExpense;
+            }
+            set
+            {
+                _totalExpense = value;
+            }
+        }
+        private string _numberOfIncomeExtractions;
+        public string NumberOfIncomeExtractions
+        {
+            get
+            {
+                return _numberOfIncomeExtractions;
+            }
+            set
+            {
+                _numberOfIncomeExtractions = value;
+            }
+        }
+        private string _numberOfExpenseExtractions
+        {
+            get
+            {
+                return _numberOfExpenseExtractions;
+            }
+            set
+            {
+                _numberOfExpenseExtractions = value;
+            }
+        }
+
         
         //Constructor 
         public Account(int invoiceNo,string clientname, string accounttype,string itemname, int quantity,decimal unitprice, DateTime date)
@@ -111,6 +208,11 @@ namespace Financial_Manager_V0._0.Model
             
             
       
+        }
+        // Overloaded Constructor for Empty AccountQuery calls 
+        public Account()
+        {
+
         }
         //Writes an Account Record to the database using entity framework
         public  int WriteToDatabase()
@@ -143,6 +245,33 @@ namespace Financial_Manager_V0._0.Model
                 }
             }
         
+        }
+        //Obtains the Top selling /most bought product
+        public void QueryTopProducts()
+        {
+            string sqlQueryTopSellingProduct = "Select COUNT(ItemName),ItemName From Invoice Where AccountType='@Invoice' Group By ItemName ORDER BY COUNT(ItemName) DESC";
+            using (var context=new FinancialEntities())
+            {
+                foreach (Invoice invoice in context.Invoices.SqlQuery(sqlQueryTopSellingProduct))
+                {
+                    WriteLine(invoice.ItemName);
+                }
+            }
+        }
+        //Obtains the top client/supplier
+        public void QueryTopClientSupplier()
+        {
+            //TODO
+        }
+        //Obtains Number of Expense Income Transactions
+        public void QueryNumberOfTransactions()
+        {
+            //TODO
+        }
+        //Obtains Total Expense Income 
+        public void QueryTotalExpenseIncome()
+        {
+            //TODO
         }
         
     }

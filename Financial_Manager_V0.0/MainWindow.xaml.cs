@@ -65,6 +65,10 @@ namespace Financial_Manager_V0._0
         private void ReportViewModel(object sender, RoutedEventArgs e)
         {
             DataContext = new ReportViewModel();
+            //Object to execute queries
+            ReportViewModel ReportView = new ReportViewModel();
+            ReportView.ExecuteQueries();
+            
         }
 
         private void MenuDrawerClick(object sender, RoutedEventArgs e)

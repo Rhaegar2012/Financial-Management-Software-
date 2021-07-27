@@ -249,14 +249,27 @@ namespace Financial_Manager_V0._0.Model
         //Obtains the Top selling /most bought product
         public void QueryTopProducts()
         {
-            string sqlQueryTopSellingProduct = "Select COUNT(ItemName),ItemName From Invoice Where AccountType='@Invoice' Group By ItemName ORDER BY COUNT(ItemName) DESC";
-            using (var context=new FinancialEntities())
+            var context = new FinancialEntities();
+            //var sqlQueryTopSellingProduct = context.Invoices.SqlQuery("Select Count(ItemName),ItemName From Invoice Where AccountType='@Invoice' Group By ItemName Order By Count(ItemName) Desc").ToList<Invoice>();
+            //var query = context.Invoices.SqlQuery("Select * From Invoice").ToList<Invoice>();
+            var query = from p in context.Invoices
+                        where p.AccountType == "Invoice"
+                        group p by p.ItemName into ItemGroup
+                        orderby ItemGroup.Key
+                        select ItemGroup;
+
+            foreach(var item in query)
             {
-                foreach (Invoice invoice in context.Invoices.SqlQuery(sqlQueryTopSellingProduct))
+                WriteLine(item.Key);
+                foreach(var name in item)
                 {
-                    WriteLine(invoice.ItemName);
+                    WriteLine($"\t{name.ItemName}");
                 }
             }
+                       
+          
+           
+            
         }
         //Obtains the top client/supplier
         public void QueryTopClientSupplier()

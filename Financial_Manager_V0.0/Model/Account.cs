@@ -182,7 +182,8 @@ namespace Financial_Manager_V0._0.Model
                 _numberOfIncomeExtractions = value;
             }
         }
-        private string _numberOfExpenseExtractions
+        private string _numberOfExpenseExtractions;
+        public string NumberOfExpenseExtractions
         {
             get
             {
@@ -214,6 +215,7 @@ namespace Financial_Manager_V0._0.Model
         {
 
         }
+        
         //Writes an Account Record to the database using entity framework
         public  int WriteToDatabase()
         {
@@ -250,36 +252,77 @@ namespace Financial_Manager_V0._0.Model
         public void QueryTopProducts()
         {
             var context = new FinancialEntities();
-            //var sqlQueryTopSellingProduct = context.Invoices.SqlQuery("Select Count(ItemName),ItemName From Invoice Where AccountType='@Invoice' Group By ItemName Order By Count(ItemName) Desc").ToList<Invoice>();
-            //var query = context.Invoices.SqlQuery("Select * From Invoice").ToList<Invoice>();
-            var query = from p in context.Invoices
+            Dictionary<string, int> TopSellingItemValueCounts = new Dictionary<string, int>();
+            Dictionary<string, int> MostBoughtProductValueCounts = new Dictionary<string, int>();
+            //Top Selling product query
+            var TopSellingQuery = from p in context.Invoices
                         where p.AccountType == "Invoice"
                         group p by p.ItemName into ItemGroup
                         orderby ItemGroup.Key
                         select ItemGroup;
-
-            foreach(var item in query)
-            {
-                WriteLine(item.Key);
-                foreach(var name in item)
-                {
-                    WriteLine($"\t{name.ItemName}");
-                }
-            }
-                       
-          
-           
+            //Most bought product query
+            var MostBoughtQuery = from item in context.Invoices
+                                  where item.AccountType == "Bill"
+                                  group item by item.ItemName into ItemGroup
+                                  orderby ItemGroup.Key
+                                  select ItemGroup;
             
+            foreach(var item in TopSellingQuery)
+            {
+                TopSellingItemValueCounts.Add(item.Key,item.Count());
+            }
+            foreach(var item in MostBoughtQuery)
+            {
+                MostBoughtProductValueCounts.Add(item.Key, item.Count());
+            }
+            this.TopSellingProduct=TopSellingItemValueCounts.Keys.Max();
+            this.MostBoughtProduct = MostBoughtProductValueCounts.Keys.Max();
         }
         //Obtains the top client/supplier
         public void QueryTopClientSupplier()
         {
-            //TODO
+            var context = new FinancialEntities();
+            Dictionary<string, int> TopClientValueCounts = new Dictionary<string,int>();
+            Dictionary<string, int> TopSupplierValueCounts = new Dictionary<string, int>();
+            //Top client product query 
+            var TopClientQuery = from item in context.Invoices
+                                 where item.AccountType == "Invoice"
+                                 group item by item.ClientName into ClientGroup
+                                 orderby ClientGroup.Key
+                                 select ClientGroup;
+            //Top supplier product query
+            var TopSupplierQuery = from item in context.Invoices
+                                   where item.AccountType == "Bill"
+                                   group item by item.ClientName into SupplierGroup
+                                   orderby SupplierGroup.Key
+                                   select SupplierGroup;
+            foreach (var item in TopClientQuery)
+            {
+                TopClientValueCounts.Add(item.Key, item.Count());
+            }
+            foreach (var item in TopSupplierQuery)
+            {
+                TopSupplierValueCounts.Add(item.Key, item.Count());
+            }
+            this.TopClient = TopClientValueCounts.Keys.Max();
+            this.TopSupplier = TopSupplierValueCounts.Keys.Max();
         }
         //Obtains Number of Expense Income Transactions
         public void QueryNumberOfTransactions()
         {
-            //TODO
+            var context = new FinancialEntities();
+            var IncomeTransactionQuery = from item in context.Invoices
+                                       where item.AccountType=="Invoice"
+                                       group item by item.AccountType into AccountGroup
+                                       orderby AccountGroup.Key
+                                       select AccountGroup;
+            var ExpenseTransactionQuery = from item in context.Invoices
+                                           where item.AccountType == "Bill"
+                                           group item by item.AccountType into AccountGroup
+                                           orderby AccountGroup.Key
+                                           select AccountGroup;
+            this.NumberOfIncomeExtractions = IncomeTransactionQuery.Count().ToString();
+            this.NumberOfExpenseExtractions = ExpenseTransactionQuery.Count().ToString();
         }
         //Obtains Total Expense Income 
         public void QueryTotalExpenseIncome()

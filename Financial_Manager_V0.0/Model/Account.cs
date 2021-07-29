@@ -316,6 +316,7 @@ namespace Financial_Manager_V0._0.Model
                                        group item by item.AccountType into AccountGroup
                                        orderby AccountGroup.Key
                                        select AccountGroup;
+
             var ExpenseTransactionQuery = from item in context.Invoices
                                            where item.AccountType == "Bill"
                                            group item by item.AccountType into AccountGroup
@@ -327,7 +328,33 @@ namespace Financial_Manager_V0._0.Model
         //Obtains Total Expense Income 
         public void QueryTotalExpenseIncome()
         {
-            //TODO
+            WriteLine("I'm accessed");
+            var context = new FinancialEntities();
+            decimal TotalIncome = 0.0M;
+            decimal TotalExpense = 0.0M;
+            var IncomeQuery = from item in context.Invoices
+                              where item.AccountType == "Invoice"
+                              select item;
+
+            var ExpenseQuery = from item in context.Invoices
+                               where item.AccountType == "Bill"
+                               select item;
+
+            foreach( var item in IncomeQuery)
+            {
+
+                int quantity = (int)item.Quantity;
+                decimal unitPrice =(decimal) item.UnitPrice;
+                TotalIncome += quantity*unitPrice;
+            }
+            foreach(var item in ExpenseQuery)
+            {
+                int quantity = (int)item.Quantity;
+                decimal unitPrice = (decimal)item.UnitPrice;
+                TotalIncome += quantity * unitPrice;
+            }
+            this.TotalIncome = TotalIncome.ToString();
+            this.TotalExpense = TotalExpense.ToString();
         }
         
     }

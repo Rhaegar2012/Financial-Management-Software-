@@ -10,6 +10,15 @@ namespace Financial_Manager_V0._0.ViewModel
     class ReportViewModel
     {
         Account AccountQuery;
+        private string _topSellingProduct;
+        public string TopSellingProduct { get; set; }
+        private string _mostBoughtProduct;
+        public string MostBoughtProduct { get; set; }
+        private string _topClient;
+        public string TopClient { get; set; }
+        private string _topSupplier;
+        public string TopSupplier { get; set; }
+
 
         //Constructor 
         public ReportViewModel()
@@ -21,6 +30,9 @@ namespace Financial_Manager_V0._0.ViewModel
         public void ExecuteQueries()
         {
             AccountQuery.QueryTopProducts();
+            AccountQuery.QueryTopClientSupplier();
+            AccountQuery.QueryNumberOfTransactions();
+            AccountQuery.QueryTotalExpenseIncome();
         }
     }
 }

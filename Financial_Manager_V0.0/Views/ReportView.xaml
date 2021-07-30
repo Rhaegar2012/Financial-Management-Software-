@@ -4,8 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Financial_Manager_V0._0.Views"
+             xmlns:modelviews="clr-namespace:Financial_Manager_V0._0.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <modelviews:ReportViewModel x:Key="ModelView"/>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Source="{StaticResource ModelView}"/>
+    </UserControl.DataContext>
     <Grid Background="Azure">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -17,35 +24,35 @@
         <StackPanel Grid.Column="0" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Number of Income Transactions" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
-                <TextBlock Text="Binding DATA" FontSize="12" FontFamily="Century Gothic" Margin="17,20,10,0"/>
+                <TextBlock Text="{Binding NumberIncomeTransactions, Mode=TwoWay}" FontSize="12" FontFamily="Century Gothic" Margin="17,20,10,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Number of Expense Transactions" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
-                <TextBlock Text="Binding DATA" FontSize="12" FontFamily="Century Gothic" Margin="13,20,10,0"/>
+                <TextBlock Text="{Binding NumberExpenseTransactions, Mode=TwoWay}" FontSize="12" FontFamily="Century Gothic" Margin="13,20,10,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Top Selling product" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
-                <TextBlock Text="Binding DATA" FontSize="12" FontFamily="Century Gothic" Margin="90,20,10,0"/>
+                <TextBlock Text="{Binding TopSellingProduct, Mode=TwoWay}" FontSize="12" FontFamily="Century Gothic" Margin="90,20,10,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Most Bought Item" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
-                <TextBlock Text="Binding DATA" FontSize="12" FontFamily="Century Gothic" Margin="100,20,10,0"/>
+                <TextBlock Text="{Binding TopSupplier, Mode=TwoWay}" FontSize="12" FontFamily="Century Gothic" Margin="100,20,10,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Top Client" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
-                <TextBlock Text="Binding DATA" FontSize="12" FontFamily="Century Gothic" Margin="145,20,10,0"/>
+                <TextBlock Text="{Binding TopClient, Mode=TwoWay}" FontSize="12" FontFamily="Century Gothic" Margin="145,20,10,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Top Supplier " FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
-                <TextBlock Text="Binding DATA" FontSize="12" FontFamily="Century Gothic" Margin="130,20,10,0"/>
+                <TextBlock Text="{Binding TopSupplier, Mode=TwoWay}" FontSize="12" FontFamily="Century Gothic" Margin="130,20,10,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Total Income" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
-                <TextBlock Text="Binding DATA" FontSize="12" FontFamily="Century Gothic" Margin="127,20,10,0"/>
+                <TextBlock Text="{Binding TotalIncome, Mode=TwoWay}" FontSize="12" FontFamily="Century Gothic" Margin="127,20,10,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Total Expense" FontSize="12" FontFamily="Century Gothic" Margin="20,20,10,0"/>
-                <TextBlock Text="Binding DATA" FontSize="12" FontFamily="Century Gothic" Margin="127,20,10,0"/>
+                <TextBlock Text="{Binding TotalExpense, Mode=TwoWay}" FontSize="12" FontFamily="Century Gothic" Margin="127,20,10,0"/>
             </StackPanel>
             <Button Content="Print to PDF" Width="100" HorizontalAlignment="Right" Margin="0,30,0,0"/>
 

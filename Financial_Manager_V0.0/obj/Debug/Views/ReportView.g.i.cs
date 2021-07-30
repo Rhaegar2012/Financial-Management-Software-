@@ -9,6 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Financial_Manager_V0._0.ViewModel;
 using Financial_Manager_V0._0.Views;
 using System;
 using System.Diagnostics;

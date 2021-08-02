@@ -104,7 +104,7 @@ namespace Financial_Manager_V0._0.ViewModel
             } 
             set 
             {
-                _totalIncome = value;
+                _totalExpense = value;
                 OnPropertyChanged("TotalExpense");
             } 
         }
@@ -113,6 +113,8 @@ namespace Financial_Manager_V0._0.ViewModel
         public ReportViewModel()
         {
             AccountQuery = new Account();
+            ExecuteQueries();
+            UpdateReport();
         }
 
         //Executes preset report queries 
@@ -135,6 +137,8 @@ namespace Financial_Manager_V0._0.ViewModel
             this.NumberExpenseTransactions = AccountQuery.NumberOfExpenseExtractions;
             this.TotalIncome = AccountQuery.TotalIncome;
             this.TotalExpense = AccountQuery.TotalExpense;
+            Console.WriteLine("this is the top selling product " +this.TopSellingProduct);
+            Console.WriteLine("this is the top client " + this.TopClient);
         }
     }
 }

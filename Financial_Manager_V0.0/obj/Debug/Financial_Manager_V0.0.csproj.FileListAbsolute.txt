@@ -23,3 +23,7 @@ C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Fin
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\Financial_Manager_V0.0.exe
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\Financial_Manager_V0.0.pdb
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\Financial_Manager_V0.0.csprojAssemblyReference.cache
+C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\Views\ClientView.g.cs
+C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\Views\InventoryView.g.cs
+C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\Views\ClientView.baml
+C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\obj\Debug\Views\InventoryView.baml

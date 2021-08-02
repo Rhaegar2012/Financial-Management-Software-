@@ -130,7 +130,7 @@ namespace Financial_Manager_V0._0.ViewModel
         //Methods
         public void RegisterAccount(object obj)
         {
-            Console.WriteLine("I'm clicked!");
+            
             if (CheckInput())
             {
                 int InvoiceNo = Int32.Parse(this.InvoiceNumber);

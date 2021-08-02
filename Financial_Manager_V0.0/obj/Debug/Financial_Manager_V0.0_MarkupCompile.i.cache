@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\joseb\Documents\GitHub\Light Company\Financial-Management-Software-\Financial_Manager_V0.0\App.xaml
-3106738153
+5249405332
 
-15-871694825
+21-304162500
 18875845129
-MainWindow.xaml;Views\RegisterAccount.xaml;Views\ReportView.xaml;
+MainWindow.xaml;Views\ClientView.xaml;Views\InventoryView.xaml;Views\RegisterAccount.xaml;Views\ReportView.xaml;
 
 True
 

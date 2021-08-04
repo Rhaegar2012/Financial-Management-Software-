@@ -26,9 +26,9 @@
                 <TextBlock Text="Add Item" FontSize="12" FontFamily="Century Gothic" Margin="20,0,5,20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
-                <TextBox Text="Reference Number" Margin="15,20,0,5"/>
-                <TextBox Text="Item Name" Margin="15,20,0,5"/>
-                <TextBox Text="Quantity" Margin="15,20,0,5"/>
+                <TextBox Text="{Binding ItemReferenceNumber ,Mode=TwoWay}" Margin="15,20,0,5"/>
+                <TextBox Text="{Binding ItemName,Mode=TwoWay}" Margin="15,20,0,5"/>
+                <TextBox Text="{Binding Quantity,Mode=TwoWay}" Margin="15,20,0,5"/>
                 <Button x:Name="AddItemButton"
                         BorderBrush="Transparent"
                         Background="Transparent"
@@ -48,11 +48,11 @@
                         Content="Search"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="2,0,20,0">
-                <ComboBox x:Name="AccountComBox" Width="80" Height="20" Margin="0,20,0,0" HorizontalAlignment="Left">
+                <ComboBox x:Name="AccountComBox" Width="80" Height="20" Margin="0,20,0,0" HorizontalAlignment="Left" SelectedItem="{Binding SearchCategory,Mode=TwoWay}">
                     <ComboBoxItem Content="By Name"></ComboBoxItem>
                     <ComboBoxItem Content="By ID"></ComboBoxItem>
                 </ComboBox>
-                <TextBox Text="Item ID/Name" Margin="0,25,0,5"/>
+                <TextBox Text="{Binding SearchCategory, Mode=TwoWay}" Margin="0,25,0,5"/>
             </StackPanel>
         </StackPanel>
        

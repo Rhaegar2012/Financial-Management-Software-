@@ -4,11 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Financial_Manager_V0._0.Utilities;
+using Financial_Manager_V0._0.Model;
+using System.Windows.Input;
+
 
 namespace Financial_Manager_V0._0.ViewModel
 {
     class InventoryViewModel : ObservableObject
     {
+        //Inventory object
+        private Inventory inventoryEntry;
+        //Input Variables
         private string _itemReferenceNumber;
         public string ItemReferenceNumber
         {
@@ -74,10 +80,48 @@ namespace Financial_Manager_V0._0.ViewModel
                 OnPropertyChanged("ItemSearchCategory");
             }
         }
+        //Button command variables 
+        private ICommand _addItemButton;
+        public ICommand AddItemButton
+        {
+            get
+            {
+                return _addItemButton;
+            }
+            set
+            {
+                _addItemButton = value;
+            }
+        }
+        private ICommand _searchButton;
+        public ICommand SearchButton
+        {
+            get
+            {
+                return _searchButton;
+            }
+            set
+            {
+                _searchButton = value;
+            }
+        }
         //Constructor
         public InventoryViewModel()
         {
-
+            AddItemButton = new RelayCommand(new Action<object>(AddInventoryItem));
+            SearchButton = new RelayCommand(new Action<object>(SearchItem));
+           
+        }
+        //Action Methods
+        public void AddInventoryItem(object obj)
+        {
+            
+            //TODO
+            
+        }
+        public void SearchItem(object obj)
+        {
+            //TODO
         }
 
     }

@@ -4,9 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Financial_Manager_V0._0.Views"
+             xmlns:viewmodels="clr-namespace:Financial_Manager_V0._0.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <UserControl.Resources>
+        <viewmodels:ClientViewModel x:Key="ModelView"/>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Source="{StaticResource ModelView}"/>
+    </UserControl.DataContext>
+    <Grid Background="Azure">
+        
             
     </Grid>
 </UserControl>

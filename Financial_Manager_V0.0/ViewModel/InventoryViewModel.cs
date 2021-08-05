@@ -13,7 +13,7 @@ namespace Financial_Manager_V0._0.ViewModel
     class InventoryViewModel : ObservableObject
     {
         //Inventory object
-        private Inventory inventoryEntry;
+        private InventoryModel inventoryEntry;
         //Input Variables
         private string _itemReferenceNumber;
         public string ItemReferenceNumber
@@ -115,13 +115,34 @@ namespace Financial_Manager_V0._0.ViewModel
         //Action Methods
         public void AddInventoryItem(object obj)
         {
-            
-            //TODO
+
+            if (checkInput("add"))
+            {
+                int itemNo = Int32.Parse(this.ItemReferenceNumber);
+                int itemQuantity = Int32.Parse(this.Quantity);
+                inventoryEntry = new InventoryModel(this.ItemName, itemNo, itemQuantity);
+                inventoryEntry.AddInventoryItem();
+            }
             
         }
         public void SearchItem(object obj)
         {
             //TODO
+        }
+        private bool checkInput(string method)
+        {
+            switch (method)
+            {
+                case "add":
+                    {
+                        break;
+                    }
+                case "search":
+                    {
+                        break;
+                    }
+            }
+            throw new NotImplementedException();
         }
 
     }

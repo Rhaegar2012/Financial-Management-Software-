@@ -61,7 +61,7 @@
                     </ListViewItem>
                     <ListViewItem Height="30">
                         <StackPanel Orientation="Horizontal">
-                            <Button Background="Transparent" BorderBrush="Transparent" Height="30">
+                            <Button Background="Transparent" BorderBrush="Transparent" Height="30" Click="ClientViewModel">
                                 <Image Source="Icons/Client_Filled.png.png"/>
                             </Button>
                             <TextBlock Text="Clients" Margin="6,6,2,0"/>

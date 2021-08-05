@@ -72,6 +72,11 @@ namespace Financial_Manager_V0._0
             DataContext = new InventoryViewModel();
         }
 
+        private void ClientViewModel(object sender, RoutedEventArgs e)
+        {
+            DataContext = new ClientViewModel();
+        }
+
         private void MenuDrawerClick(object sender, RoutedEventArgs e)
         {
             timer.Start();

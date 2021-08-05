@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Financial_Manager_V0._0.EntityFramework;
+using static System.Console;
 
 namespace Financial_Manager_V0._0.Model
 {
-    class Inventory
+    class InventoryModel
     {
         private string _itemName;
         public string ItemName
@@ -45,7 +47,7 @@ namespace Financial_Manager_V0._0.Model
             }
         }
         //Constructor
-        public Inventory(string itemName, int itemReference, int itemQuantity)
+        public InventoryModel(string itemName, int itemReference, int itemQuantity)
         {
             this.ItemName = itemName;
             this.ItemReferenceNumber = itemReference;
@@ -53,7 +55,25 @@ namespace Financial_Manager_V0._0.Model
         }
         public void AddInventoryItem()
         {
-            //TODO
+            using(var context= new FinancialEntities())
+            {
+                try
+                {
+                    var newInventoryItem = new Inventory()
+                    {
+                        ItemName = this.ItemName,
+                        ItemQuantity = this.ItemQuantity
+                    };
+                    context.Inventories.Add(newInventoryItem);
+                    context.SaveChanges();
+                }catch(Exception ex)
+                {
+                    WriteLine(ex.InnerException?.Message);
+                    
+                }
+               
+
+            }
         }
         public void SearchInventory(string query,string queryType)
         {

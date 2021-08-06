@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Financial_Manager_V0._0.Utilities;
 using Financial_Manager_V0._0.Model;
 using System.Windows.Input;
+using System.Windows;
 
 
 namespace Financial_Manager_V0._0.ViewModel
@@ -68,6 +69,18 @@ namespace Financial_Manager_V0._0.ViewModel
             }
         }
         private string _itemSearchName;
+        public string ItemSearchName
+        {
+            get
+            {
+                return _itemSearchName;
+            }
+            set
+            {
+                _itemSearchName = value;
+                OnPropertyChanged("ItemSearchName");
+            }
+        }
         public string ItemSearchCategory
         {
             get
@@ -112,37 +125,70 @@ namespace Financial_Manager_V0._0.ViewModel
             SearchButton = new RelayCommand(new Action<object>(SearchItem));
            
         }
+        //Create inventory entry
+        private InventoryModel CreateEntry(string ItemName, string itemNo, string itemQuantity)
+        {
+            int ItemReferenceID = Int32.Parse(itemNo);
+            int ItemQuantity = Int32.Parse(itemQuantity);
+            InventoryModel Entry = new InventoryModel(ItemName, ItemReferenceID, ItemQuantity);
+            return Entry;
+        }
         //Action Methods
         public void AddInventoryItem(object obj)
         {
 
             if (checkInput("add"))
             {
-                int itemNo = Int32.Parse(this.ItemReferenceNumber);
-                int itemQuantity = Int32.Parse(this.Quantity);
-                inventoryEntry = new InventoryModel(this.ItemName, itemNo, itemQuantity);
+                
+                inventoryEntry = CreateEntry(this.ItemName,this.ItemReferenceNumber,this.Quantity);
                 inventoryEntry.AddInventoryItem();
             }
             
         }
         public void SearchItem(object obj)
         {
-            //TODO
+            if (checkInput("search"))
+            {
+                inventoryEntry = CreateEntry(this.ItemName, this.ItemReferenceNumber, this.Quantity);
+                inventoryEntry.SearchInventory(this.ItemSearchName, this.SearchCategory);
+            }
+    
         }
         private bool checkInput(string method)
         {
+            bool inputComplete;
             switch (method)
             {
                 case "add":
                     {
+                        List<string> inputList = new List<string>() { this.ItemName, this.ItemReferenceNumber, this.Quantity };
+                        for(int i = 0; i < inputList.Count; i++)
+                        {
+                            if (String.IsNullOrEmpty(inputList[i]))
+                            {
+                                MessageBox.Show("Complete all input fields to add inventory entry");
+                                return inputComplete = false;
+                                
+                            }
+
+                        }
                         break;
                     }
                 case "search":
                     {
+                        List<string> inputList = new List<string>() { this.SearchCategory, this.ItemSearchName };
+                        for (int i=0; i<inputList.Count; i++)
+                        {
+                            if (String.IsNullOrEmpty(inputList[i]))
+                            {
+                                MessageBox.Show("Complete all input fields to search inventory item");
+                                return inputComplete = false;
+                            }
+                        }
                         break;
                     }
             }
-            throw new NotImplementedException();
+            return inputComplete=true;
         }
 
     }

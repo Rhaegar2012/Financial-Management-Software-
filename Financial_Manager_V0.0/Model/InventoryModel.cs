@@ -75,9 +75,26 @@ namespace Financial_Manager_V0._0.Model
 
             }
         }
-        public void SearchInventory(string query,string queryType)
+        public InventoryModel SearchInventory(string query,string queryType)
         {
-            //TODO
+            
+            using(var context=new FinancialEntities())
+            {
+                if (queryType.Equals("By Name"))
+                {
+                    var itemQuery = from item in context.Inventories
+                                    where item.ItemName == query
+                                    select item;
+
+                }
+                else if(queryType.Equals("By ID"))
+                {
+                    var itemQuery = from item in context.Inventories
+                                    where item.ItemName == query
+                                    select item;
+                }
+            }
+            throw new NotImplementedException();
         }
     }
 

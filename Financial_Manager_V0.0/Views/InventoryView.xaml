@@ -32,7 +32,8 @@
                 <Button x:Name="AddItemButton"
                         BorderBrush="Transparent"
                         Background="Transparent"
-                        Margin="10,5,5,0">
+                        Margin="10,10,5,0"
+                        Command="{Binding AddItemButton}">
                     <Image Source="Add_button.png" Height="25" Width="25"/>
                 </Button>
             </StackPanel>
@@ -45,7 +46,8 @@
                         FontFamily="Century Gothic"
                         Background="DeepSkyBlue"
                         Foreground="White"
-                        Content="Search"/>
+                        Content="Search"
+                        Command="{Binding SearchButton}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="2,0,20,0">
                 <ComboBox x:Name="AccountComBox" Width="80" Height="20" Margin="0,20,0,0" HorizontalAlignment="Left" SelectedItem="{Binding SearchCategory,Mode=TwoWay}">
@@ -55,5 +57,19 @@
                 <TextBox Text="{Binding SearchCategory, Mode=TwoWay}" Margin="0,25,0,5"/>
             </StackPanel>
         </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <StackPanel  Orientation="Vertical">
+                <TextBlock Text="Search Results" FontSize="12" FontFamily="Century Gothic" Margin="15,23,0,0"/>
+                <TextBlock Text="Item Name" FontSize="12" FontFamily="Century Gothic" Margin='15,23,0,0'/>
+                <TextBlock Text="Item ID" FontSize="12" FontFamily="Century Gothic" Margin='15,23,0,0'/>
+                <TextBlock Text="Quantity" FontSize="12" FontFamily="Century Gothic" Margin='15,23,0,0'/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding ItemSearchName}" FontSize="12" FontFamily="Century Gothic" Margin='15,60,0,0'/>
+                <TextBlock Text="{Binding ItemIDSearchOutput}" FontSize="12" FontFamily="Century Gothic" Margin='15,23,0,0'/>
+                <TextBlock Text="{Binding ItemQuantitySearchOutput}" FontSize="12" FontFamily="Century Gothic" Margin='15,23,0,0'/>
+            </StackPanel>
+        </StackPanel>
+       
     </Grid>
 </UserControl>

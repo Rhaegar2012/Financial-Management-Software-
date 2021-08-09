@@ -93,6 +93,31 @@ namespace Financial_Manager_V0._0.ViewModel
                 OnPropertyChanged("ItemSearchCategory");
             }
         }
+        //Search Output Variable
+        private string _itemIDSearchOutput;
+        public string ItemIDSearchOutput
+        {
+            get
+            {
+                return _itemIDSearchOutput;
+            }
+            set
+            {
+                _itemIDSearchOutput = value;
+            }
+        }
+        private string _itemQuantitySearchOutput;
+        public string ItemQuantitySearchOutput
+        {
+            get
+            {
+                return _itemQuantitySearchOutput;
+            }
+            set
+            {
+                _itemQuantitySearchOutput = value;
+            }
+        }
         //Button command variables 
         private ICommand _addItemButton;
         public ICommand AddItemButton

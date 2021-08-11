@@ -93,6 +93,85 @@ namespace Financial_Manager_V0._0.ViewModel
                 OnPropertyChanged("ClientZipCode");
             }
         }
+        //Output properties 
+        private string _queryName;
+        public string QueryName
+        {
+            get
+            {
+                return _queryName;
+            }
+            set
+            {
+                _queryName = value;
+                OnPropertyChanged("QueryName");
+            }
+        }
+        private string _queryEmail;
+        public string QueryEmail
+        {
+            get
+            {
+                return _queryEmail;
+            }
+            set
+            {
+                _queryEmail = value;
+                OnPropertyChanged("QueryEmail");
+            }
+        }
+        private string _queryPhone;
+        public string QueryPhone
+        {
+            get
+            {
+                return _queryPhone;
+            }
+            set
+            {
+                _queryPhone = value;
+                OnPropertyChanged("QueryPhone");
+            }
+        }
+        private string _queryAddress;
+        public string QueryAddress
+        {
+            get
+            {
+                return _queryAddress;
+            }
+            set
+            {
+                _queryAddress = value;
+                OnPropertyChanged("QueryAddress");
+            }
+        }
+        private string _queryCity;
+        public string QueryCity
+        {
+            get
+            {
+                return _queryCity;
+            }
+            set
+            {
+                _queryCity = value;
+                OnPropertyChanged("QueryCity");
+            }
+        }
+        private string _queryZip;
+        public string QueryZip
+        {
+            get
+            {
+                return _queryZip;
+            }
+            set
+            {
+                _queryZip = value;
+                OnPropertyChanged("QueryZip");
+            }
+        }
         //Button
         private ICommand _addButton;
         public ICommand AddButton

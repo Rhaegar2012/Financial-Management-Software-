@@ -87,7 +87,7 @@
     <Compile Include="EntityFramework\Inventory.cs" />
     <Compile Include="EntityFramework\Invoice.cs" />
     <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\Client.cs" />
+    <Compile Include="Model\ClientModel.cs" />
     <Compile Include="Model\InventoryModel.cs" />
     <Compile Include="Utilities\ObservableObject.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />

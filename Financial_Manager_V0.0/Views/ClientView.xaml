@@ -29,17 +29,17 @@
                     <TextBlock Text="Zip Code" FontSize="12" FontFamily="Century Gothic" Margin="20,0,10,20"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
-                    <TextBox Text="{Binding ClientName,Mode=TwoWay}" Margin="15,20,0,5"/>
-                    <TextBox Text="{Binding ClientEmail,Mode=TwoWay}" Margin="15,20,0,5"/>
-                    <TextBox Text="{Binding ClientPhone, Mode=TwoWay}" Margin="15,20,0,5"/>
-                    <TextBox Text="{Binding ClientAddress, Mode=TwoWay}" Margin="15,10,0,5"/>
-                    <TextBox Text="{Binding ClientCity ,Mode=TwoWay}" Margin="15,12,0,5"/>
-                    <TextBox Text="{Binding ClientZipCode, Mode=TwoWay}" Margin="15,12,0,5"/>
+                    <TextBox Text="{Binding ClientName,Mode=TwoWay}" Margin="15,20,0,5" Width="100"/>
+                    <TextBox Text="{Binding ClientEmail,Mode=TwoWay}" Margin="15,20,0,5" Width="100"/>
+                    <TextBox Text="{Binding ClientPhone, Mode=TwoWay}" Margin="15,20,0,5" Width="100"/>
+                    <TextBox Text="{Binding ClientAddress, Mode=TwoWay}" Margin="15,10,0,5" Width="100"/>
+                    <TextBox Text="{Binding ClientCity ,Mode=TwoWay}" Margin="15,12,0,5" Width="100"/>
+                    <TextBox Text="{Binding ClientZipCode, Mode=TwoWay}" Margin="15,12,0,5" Width="100"/>
                     <Button x:Name="AddItemButton"
                         BorderBrush="Transparent"
                         Background="Transparent"
                         Margin="10,10,5,0"
-                        Command="{Binding AddItemButton}">
+                        Command="{Binding AddClientButton}">
                         <Image Source="Add_button.png" Height="25" Width="25"/>
                     </Button>
                 </StackPanel>
@@ -53,17 +53,17 @@
                         Background="DeepSkyBlue"
                         Foreground="White"
                         Content="Search"
-                        Command="{Binding SearchButton}"/>
+                        Command="{Binding SearchClientButton}"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="2,0,20,0">
                     <Button x:Name="AddClientButton"
                         BorderBrush="Transparent"
                         Background="Transparent"
                         Margin="10,15,5,0"
-                        Command="{Binding AddItemButton}">
+                        Command="{Binding AddClientButton}">
                         <Image Source="Add_button.png" Height="25" Width="25"/>
                     </Button>
-                    <TextBox Text="Search Client" Margin="0,22,0,5"/>
+                    <TextBox Text="{Binding ClientQuery, Mode=TwoWay}" Margin="0,22,0,5" Width="100"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="1">

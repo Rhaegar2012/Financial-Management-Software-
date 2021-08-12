@@ -115,11 +115,12 @@ namespace Financial_Manager_V0._0.Model
         //Adds client to database 
         public void AddClient()
         {
-            var context = new FinancialEntities();
-            using (context)
+            
+            using (var context= new FinancialEntities())
             {
                 try
                 {
+                    WriteLine("Client added");
                     var ClientEntry = new Client()
                     {
                         ClientName = this.Name,
@@ -139,6 +140,29 @@ namespace Financial_Manager_V0._0.Model
 
                 }
             }
+        }
+        // Searches for an spececific client 
+        public ClientModel SearchClient(string nameQuery)
+        {
+            ClientModel clientFound;
+            using(var context=new FinancialEntities())
+            {
+                try
+                {
+                    var clientQuery = from item in context.Clients
+                                      where item.ClientName == nameQuery
+                                      select item;
+                    foreach(var client in clientQuery)
+                    {
+                        clientFound = new ClientModel(client.ClientName, client.ClientPhone.ToString(), client.ClientAddress, client.ClientEmail, client.ClientCity, client.ClientZIP);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    WriteLine(ex.InnerException?.Message);
+                }
+            }
+            throw new NotImplementedException();
         }
 
     }

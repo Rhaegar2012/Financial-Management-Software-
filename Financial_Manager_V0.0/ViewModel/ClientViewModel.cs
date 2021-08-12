@@ -49,7 +49,7 @@ namespace Financial_Manager_V0._0.ViewModel
             }
             set
             {
-                _clientEmail = value;
+                _clientPhone = value;
                 OnPropertyChanged("ClientPhone");
             }
         }
@@ -91,6 +91,20 @@ namespace Financial_Manager_V0._0.ViewModel
             {
                 _clientZipCode = value;
                 OnPropertyChanged("ClientZipCode");
+            }
+        }
+        //Input property for querying 
+        private string _clientQuery;
+        public string ClientQuery
+        {
+            get
+            {
+                return _clientQuery;
+            }
+            set
+            {
+                _clientQuery = value;
+                OnPropertyChanged("ClientQuery");
             }
         }
         //Output properties 
@@ -174,7 +188,7 @@ namespace Financial_Manager_V0._0.ViewModel
         }
         //Button
         private ICommand _addButton;
-        public ICommand AddButton
+        public ICommand AddClientButton
         {
             get
             {
@@ -186,7 +200,7 @@ namespace Financial_Manager_V0._0.ViewModel
             }
         }
         private ICommand _searchButton;
-        public ICommand SearchButton
+        public ICommand SearchClientButton
         {
             get
             {
@@ -200,17 +214,19 @@ namespace Financial_Manager_V0._0.ViewModel
         //Constructor 
         public ClientViewModel()
         {
-            AddButton = new RelayCommand(new Action<object>(AddClient));
-            SearchButton = new RelayCommand(new Action<object>(SearchClient));
+            AddClientButton = new RelayCommand(new Action<object>(AddClient));
+            SearchClientButton = new RelayCommand(new Action<object>(SearchClient));
         }
         //Methods
         public void AddClient(object obj)
         {
-            //TODO
+            Console.WriteLine("Client add method accessed");
+            ClientModel newClient = new ClientModel(this.ClientName, this.ClientPhone, this.ClientAddress, this.ClientEmail, this.ClientCity, this.ClientZipCode);
+            newClient.AddClient();
         }
         public void SearchClient(object obj)
         {
-            //TODO
+            ClientModel clientQuery = new ClientModel(this.ClientQuery);
         }
     }
 }

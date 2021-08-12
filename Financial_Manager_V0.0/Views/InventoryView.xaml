@@ -26,9 +26,9 @@
                 <TextBlock Text="Add Item" FontSize="12" FontFamily="Century Gothic" Margin="20,0,10,20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
-                <TextBox Text="{Binding ItemReferenceNumber ,Mode=TwoWay}" Margin="15,20,0,5"/>
-                <TextBox Text="{Binding ItemName,Mode=TwoWay}" Margin="15,20,0,5"/>
-                <TextBox Text="{Binding Quantity,Mode=TwoWay}" Margin="15,20,0,5"/>
+                <TextBox Text="{Binding ItemReferenceNumber ,Mode=TwoWay}" Margin="15,20,0,5" Width="100"/>
+                <TextBox Text="{Binding ItemName,Mode=TwoWay}" Margin="15,20,0,5" Width="100"/>
+                <TextBox Text="{Binding Quantity,Mode=TwoWay}" Margin="15,20,0,5" Width="100"/>
                 <Button x:Name="AddItemButton"
                         BorderBrush="Transparent"
                         Background="Transparent"

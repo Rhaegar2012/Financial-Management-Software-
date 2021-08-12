@@ -66,6 +66,7 @@ namespace Financial_Manager_V0._0.Model
             {
                 try
                 {
+                    WriteLine("Item registered");
                     var newInventoryItem = new Inventory()
                     {
                         ItemName = this.ItemName,

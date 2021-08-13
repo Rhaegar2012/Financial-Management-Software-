@@ -9,7 +9,6 @@ namespace Financial_Manager_V0._0.EntityFramework
     [Table("Client")]
     public partial class Client
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ClientID { get; set; }
 
         [StringLength(255)]

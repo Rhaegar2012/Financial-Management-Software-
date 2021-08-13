@@ -10,8 +10,9 @@ namespace Financial_Manager_V0._0.EntityFramework
     public partial class Inventory
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ItemID { get; set; }
+        public int ItemNo { get; set; }
+
+        public int? ItemID { get; set; }
 
         [StringLength(255)]
         public string ItemName { get; set; }

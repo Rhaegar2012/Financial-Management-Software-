@@ -96,7 +96,7 @@ namespace Financial_Manager_V0._0.Model
                     
                     foreach(var item in itemQuery)
                     {
-                        inventoryQuery = new InventoryModel(item.ItemName, item.ItemID, item.ItemQuantity);
+                        inventoryQuery = new InventoryModel(item.ItemName, (int)item.ItemID,(int) item.ItemQuantity);
                         return inventoryQuery;
                     }
                 
@@ -110,7 +110,7 @@ namespace Financial_Manager_V0._0.Model
                                     select item;
                     foreach(var item in itemQuery)
                     {
-                        inventoryQuery = new InventoryModel(item.ItemName, item.ItemID, item.ItemQuantity);
+                        inventoryQuery = new InventoryModel(item.ItemName,(int) item.ItemID, (int)item.ItemQuantity);
                         return inventoryQuery;
                     }
                 }

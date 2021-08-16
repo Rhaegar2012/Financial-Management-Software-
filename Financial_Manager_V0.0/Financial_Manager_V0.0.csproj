@@ -90,6 +90,7 @@
     <Compile Include="Model\ClientModel.cs" />
     <Compile Include="Model\InventoryModel.cs" />
     <Compile Include="Utilities\ObservableObject.cs" />
+    <Compile Include="Utilities\QueryAggregation.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="ViewModel\AccountViewModel.cs" />
     <Compile Include="ViewModel\ClientViewModel.cs" />

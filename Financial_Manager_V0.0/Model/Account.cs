@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using Financial_Manager_V0._0.EntityFramework;
+using Financial_Manager_V0._0.Utilities;
 using static System.Console;
 
 
@@ -255,21 +256,20 @@ namespace Financial_Manager_V0._0.Model
             Dictionary<string, int> TopSellingItemValueCounts = new Dictionary<string, int>();
             Dictionary<string, int> MostBoughtProductValueCounts = new Dictionary<string, int>();
             //Top Selling product query
-            var TopSellingQuery = from p in context.Invoices
-                        where p.AccountType == "Invoice"
-                        group p by p.ItemName into ItemGroup
-                        orderby ItemGroup.Key
-                        select ItemGroup;
+            var TopSellingQuery = from query in context.Invoices
+                                  where query.AccountType == "Invoice"
+                                  select query;
+
             //Most bought product query
             var MostBoughtQuery = from item in context.Invoices
                                   where item.AccountType == "Bill"
                                   group item by item.ItemName into ItemGroup
                                   orderby ItemGroup.Key
                                   select ItemGroup;
-            
+            //Multiply Unit Price and Quantity
             foreach(var item in TopSellingQuery)
             {
-                TopSellingItemValueCounts.Add(item.Key,item.Count());
+                WriteLine(item.Quantity*item.UnitPrice);
             }
             foreach(var item in MostBoughtQuery)
             {
@@ -313,15 +313,11 @@ namespace Financial_Manager_V0._0.Model
             var context = new FinancialEntities();
             var IncomeTransactionQuery = from item in context.Invoices
                                        where item.AccountType=="Invoice"
-                                       group item by item.AccountType into AccountGroup
-                                       orderby AccountGroup.Key
-                                       select AccountGroup;
+                                       select item;
 
             var ExpenseTransactionQuery = from item in context.Invoices
                                            where item.AccountType == "Bill"
-                                           group item by item.AccountType into AccountGroup
-                                           orderby AccountGroup.Key
-                                           select AccountGroup;
+                                           select item;
             this.NumberOfIncomeExtractions = IncomeTransactionQuery.Count().ToString();
             this.NumberOfExpenseExtractions = ExpenseTransactionQuery.Count().ToString();
         }

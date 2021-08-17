@@ -195,6 +195,8 @@ namespace Financial_Manager_V0._0.Model
                 _numberOfExpenseExtractions = value;
             }
         }
+        //Object for collection methods 
+        private CollectionMethods collection = new CollectionMethods();
 
         
         //Constructor 
@@ -207,6 +209,7 @@ namespace Financial_Manager_V0._0.Model
             this.Quantity = quantity;
             this.UnitPrice = unitprice;
             this.Date = date;
+
             
             
       
@@ -253,8 +256,8 @@ namespace Financial_Manager_V0._0.Model
         public void QueryTopProducts()
         {
             var context = new FinancialEntities();
-            Dictionary<string, int> TopSellingItemValueCounts = new Dictionary<string, int>();
-            Dictionary<string, int> MostBoughtProductValueCounts = new Dictionary<string, int>();
+            Dictionary<string, decimal> TopSellingItemValueCounts = new Dictionary<string, decimal>();
+            Dictionary<string, decimal> MostBoughtProductValueCounts = new Dictionary<string, decimal>();
             //Top Selling product query
             var TopSellingQuery = from query in context.Invoices
                                   where query.AccountType == "Invoice"
@@ -263,49 +266,78 @@ namespace Financial_Manager_V0._0.Model
             //Most bought product query
             var MostBoughtQuery = from item in context.Invoices
                                   where item.AccountType == "Bill"
-                                  group item by item.ItemName into ItemGroup
-                                  orderby ItemGroup.Key
-                                  select ItemGroup;
+                                  select item;
             //Multiply Unit Price and Quantity
             foreach(var item in TopSellingQuery)
             {
-                WriteLine(item.Quantity*item.UnitPrice);
+                decimal value =(decimal) item.Quantity * (decimal) item.UnitPrice;
+                if (TopSellingItemValueCounts.ContainsKey(item.ItemName))
+                {
+                    TopSellingItemValueCounts[item.ItemName] += value;
+                }
+                else
+                {
+                     TopSellingItemValueCounts.Add(item.ItemName, value);
+                }
+
             }
             foreach(var item in MostBoughtQuery)
             {
-                MostBoughtProductValueCounts.Add(item.Key, item.Count());
+                decimal value = (decimal)item.Quantity * (decimal)item.UnitPrice;
+                if (MostBoughtProductValueCounts.ContainsKey(item.ItemName))
+                {
+                    MostBoughtProductValueCounts[item.ItemName] += value;
+                }
+                else
+                {
+                    MostBoughtProductValueCounts.Add(item.ItemName, value);
+                }
             }
-            this.TopSellingProduct=TopSellingItemValueCounts.Keys.Max();
-            this.MostBoughtProduct = MostBoughtProductValueCounts.Keys.Max();
+
+            this.TopSellingProduct = collection.MaxDictValue(TopSellingItemValueCounts);
+            this.MostBoughtProduct = collection.MaxDictValue(MostBoughtProductValueCounts);
         }
         //Obtains the top client/supplier
         public void QueryTopClientSupplier()
         {
             var context = new FinancialEntities();
-            Dictionary<string, int> TopClientValueCounts = new Dictionary<string,int>();
-            Dictionary<string, int> TopSupplierValueCounts = new Dictionary<string, int>();
+            Dictionary<string, decimal> TopClientValueCounts = new Dictionary<string,decimal>();
+            Dictionary<string, decimal> TopSupplierValueCounts = new Dictionary<string, decimal>();
             //Top client product query 
             var TopClientQuery = from item in context.Invoices
                                  where item.AccountType == "Invoice"
-                                 group item by item.ClientName into ClientGroup
-                                 orderby ClientGroup.Key
-                                 select ClientGroup;
+                                 select item;
             //Top supplier product query
             var TopSupplierQuery = from item in context.Invoices
                                    where item.AccountType == "Bill"
-                                   group item by item.ClientName into SupplierGroup
-                                   orderby SupplierGroup.Key
-                                   select SupplierGroup;
+                                   select item;
             foreach (var item in TopClientQuery)
             {
-                TopClientValueCounts.Add(item.Key, item.Count());
+                decimal value = (decimal)item.Quantity * (decimal)item.UnitPrice;
+                if (TopClientValueCounts.ContainsKey(item.ClientName))
+                {
+                    TopClientValueCounts[item.ClientName] += value;
+                }
+                else
+                {
+                    TopClientValueCounts.Add(item.ClientName, value);
+                }
+
             }
             foreach (var item in TopSupplierQuery)
             {
-                TopSupplierValueCounts.Add(item.Key, item.Count());
+                decimal value = (decimal)item.Quantity * (decimal)item.UnitPrice;
+                if (TopSupplierValueCounts.ContainsKey(item.ClientName))
+                {
+                    TopSupplierValueCounts[item.ClientName] += value;
+                }
+                else
+                {
+                    TopSupplierValueCounts.Add(item.ClientName, value);
+                }
             }
-            this.TopClient = TopClientValueCounts.Keys.Max();
-            this.TopSupplier = TopSupplierValueCounts.Keys.Max();
+            this.TopClient = collection.MaxDictValue(TopClientValueCounts);
+            this.TopSupplier = collection.MaxDictValue(TopSupplierValueCounts);
         }
         //Obtains Number of Expense Income Transactions
         public void QueryNumberOfTransactions()
@@ -347,7 +379,7 @@ namespace Financial_Manager_V0._0.Model
             {
                 int quantity = (int)item.Quantity;
                 decimal unitPrice = (decimal)item.UnitPrice;
-                TotalIncome += quantity * unitPrice;
+                TotalExpense += quantity * unitPrice;
             }
             this.TotalIncome = TotalIncome.ToString();
             this.TotalExpense = TotalExpense.ToString();

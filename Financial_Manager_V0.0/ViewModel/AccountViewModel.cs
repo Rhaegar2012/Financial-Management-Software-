@@ -126,6 +126,7 @@ namespace Financial_Manager_V0._0.ViewModel
         {
             AddAccountButton = new RelayCommand(new Action<object>(RegisterAccount));
             RecentAccountList = new ObservableCollection<string>();
+            GenerateHeader();
         }
         //Methods
         public void RegisterAccount(object obj)
@@ -179,11 +180,21 @@ namespace Financial_Manager_V0._0.ViewModel
             string Addition = $"   {ClientName} " +
                 $"                 {InvoiceNo}" +
                 $"                 {AccountType}" +
-                $"                 {ItemName}" +
-                $"                 {TotalAmount}" +
-                $"                 {Date}";
+                $"                    {ItemName}" +
+                $"                    {TotalAmount}" +
+                $"                    {Date}";
             RecentAccountList.Add(Addition);
 
+        }
+        private void GenerateHeader()
+        {
+            string Header = $"   Client " +
+               $"                InvoiceNo" +
+               $"                Account Type" +
+               $"                Item" +
+               $"                Total Amount" +
+               $"                Date";
+            RecentAccountList.Add(Header);
         }
 
 

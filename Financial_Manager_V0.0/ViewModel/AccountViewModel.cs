@@ -106,7 +106,14 @@ namespace Financial_Manager_V0._0.ViewModel
                 OnPropertyChanged("Date");
             }
         }
-        public ObservableCollection<string> RecentAccountList { get; private set; }
+        //List Outputs
+        public ObservableCollection<string> AddedClientList { get; private set; }
+        public ObservableCollection<string> AddedInvoiceNumberList { get; private set; }
+        public ObservableCollection<string> AddedTransactionTypeList { get; private set; }
+        public ObservableCollection<string> AddedItemNameList { get; private set; }
+        public ObservableCollection<string>AddedTotalTransactionList { get; private set; }
+        public ObservableCollection<string> AddedDateList { get; private set; }
+
         //Buttons
         private ICommand _addAccountButton;
         public ICommand AddAccountButton
@@ -125,8 +132,13 @@ namespace Financial_Manager_V0._0.ViewModel
         public AccountViewModel()
         {
             AddAccountButton = new RelayCommand(new Action<object>(RegisterAccount));
-            RecentAccountList = new ObservableCollection<string>();
-            GenerateHeader();
+            AddedClientList = new ObservableCollection<string>();
+            AddedInvoiceNumberList = new ObservableCollection<string>();
+            AddedTransactionTypeList = new ObservableCollection<string>();
+            AddedItemNameList = new ObservableCollection<string>();
+            AddedTotalTransactionList = new ObservableCollection<string>();
+            AddedDateList = new ObservableCollection<string>();
+            
         }
         //Methods
         public void RegisterAccount(object obj)
@@ -177,24 +189,14 @@ namespace Financial_Manager_V0._0.ViewModel
         }
         private void UpdateAccountList(string InvoiceNo, string ClientName, string ItemName,string AccountType, string TotalAmount,string Date)
         {
-            string Addition = $"   {ClientName} " +
-                $"                 {InvoiceNo}" +
-                $"                 {AccountType}" +
-                $"                    {ItemName}" +
-                $"                    {TotalAmount}" +
-                $"                    {Date}";
-            RecentAccountList.Add(Addition);
+          
+            AddedClientList.Add(ClientName);
+            AddedInvoiceNumberList.Add(InvoiceNo);
+            AddedItemNameList.Add(ItemName);
+            AddedTransactionTypeList.Add(AccountType);
+            AddedTotalTransactionList.Add(TotalAmount);
+            AddedDateList.Add(Date);
 
-        }
-        private void GenerateHeader()
-        {
-            string Header = $"   Client " +
-               $"                InvoiceNo" +
-               $"                Account Type" +
-               $"                Item" +
-               $"                Total Amount" +
-               $"                Date";
-            RecentAccountList.Add(Header);
         }
 
 
